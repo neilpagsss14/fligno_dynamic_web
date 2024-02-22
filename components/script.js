@@ -1,7 +1,8 @@
 const messageContainer = document.querySelector(".notes-container");
 const createButton = document.getElementById("myBtn");
 const modal = document.getElementById("myModal");
-const span = document.getElementsByClassName("close")[0];
+const span = document.getElementsByClassName("proceed")[0];
+const close = document.getElementsByClassName("close")[0];
 const addNotesTextarea = document.getElementById("addNotes");
 
 function showNotes() {
@@ -22,7 +23,7 @@ span.onclick = function () {
 };
 
 document
-  .querySelector(".modal-body .close")
+  .querySelector(".modal-body .proceed")
   .addEventListener("click", function () {
     const noteContent = addNotesTextarea.value.trim();
     if (noteContent !== "") {
@@ -57,6 +58,10 @@ messageContainer.addEventListener("click", function (event) {
 addNotesTextarea.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
-    document.querySelector(".modal-body .close").click();
+    document.querySelector(".modal-body .proceed").click();
   }
 });
+
+close.onclick = function () {
+  modal.style.display = "none";
+};

@@ -17,13 +17,6 @@
   font-family: "Luckiest Guy";
   letter-spacing: 9px;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-}
 .notes-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -53,7 +46,7 @@ button {
   border-radius: 35px;
   font-family: "Poppins";
 }
-.notes-container img {
+img {
   width: 25px;
   position: absolute;
   bottom: 10%;
@@ -83,29 +76,27 @@ button {
 .modal-content {
   border-radius: 25px;
   background: aquamarine;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 10rem auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 80%;
 }
 
-.modal-body input {
-  background: aquamarine;
-  display: flex;
-  padding: 5rem 25rem;
-  margin: auto auto;
-  max-width: fit-content;
-}
-.close {
+.proceed {
   scale: 0.7;
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
+.close {
+  cursor: pointer;
+  font-family: "Poppins";
+  font-weight: 500;
+}
 
-.close:hover,
-.close:focus {
+.proceed:hover,
+.proceed:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
