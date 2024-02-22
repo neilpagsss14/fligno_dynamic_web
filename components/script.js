@@ -1,76 +1,62 @@
 const messageContainer = document.querySelector(".notes-container");
-const createButton = document.querySelector(".btn");
-
-var modal = document.getElementById("myModal");
-var btn = document.getElementById("myBtn");
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function () {
-  modal.style.display = "block";
-};
-
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
-let notes = document.querySelectorAll(".message-box");
+const createButton = document.getElementById("myBtn");
+const modal = document.getElementById("myModal");
+const span = document.getElementsByClassName("close")[0];
+const addNotesTextarea = document.getElementById("addNotes");
 
 function showNotes() {
   messageContainer.innerHTML = localStorage.getItem("notes");
 }
 showNotes();
+
 function updateStorage() {
   localStorage.setItem("notes", messageContainer.innerHTML);
 }
 
 createButton.addEventListener("click", () => {
-  let messageBox = document.createElement("div");
-  let paragraph = document.createElement("p");
-  let img = document.createElement("img");
-  messageBox.className = "message-box";
-
-  paragraph.setAttribute("contenteditable", "true");
-  paragraph.textContent = "";
-
-  img.src = "/assets/images/delete.png";
-  messageContainer.appendChild(messageBox);
-  messageBox.appendChild(paragraph);
-  messageBox.appendChild(img);
+  modal.style.display = "block";
 });
 
-// createButton.addEventListener("click", () => {
-//   let messageBox = document.createElement("p");
-//   let img = document.createElement("img");
-//   messageBox.className = "message-box";
-//   messageBox.setAttribute("contenteditable", "true");
+span.onclick = function () {
+  modal.style.display = "none";
+};
 
-//   img.src = "/assets/images/delete.png";
-//   messageContainer.appendChild(messageBox).appendChild(img);
-// });
+document
+  .querySelector(".modal-body .close")
+  .addEventListener("click", function () {
+    const noteContent = addNotesTextarea.value.trim();
+    if (noteContent !== "") {
+      const messageBox = document.createElement("div");
+      const paragraph = document.createElement("p");
+      const img = document.createElement("img");
+      messageBox.className = "message-box";
 
-messageContainer.addEventListener("click", function (clk) {
-  if (clk.target.tagName == "IMG") {
-    clk.target.parentElement.remove();
+      paragraph.textContent = noteContent;
+      paragraph.setAttribute("contenteditable", "true");
+
+      img.src = "/assets/images/delete.png";
+      messageContainer.appendChild(messageBox);
+      messageBox.appendChild(paragraph);
+      messageBox.appendChild(img);
+
+      updateStorage();
+      addNotesTextarea.value = "";
+      modal.style.display = "none";
+    } else {
+      alert("Please add a note before clicking checkmark.");
+    }
+  });
+
+messageContainer.addEventListener("click", function (event) {
+  if (event.target.tagName == "IMG") {
+    event.target.parentElement.remove();
     updateStorage();
-  } else if (clk.target.tagName === "P") {
-    notes = document.querySelectorAll(".message-box");
-    notes.forEach((nt) => {
-      nt.onkeyup = function () {
-        updateStorage();
-      };
-    });
   }
 });
 
-document.addEventListener("keydown", (event) => {
+addNotesTextarea.addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
-    document.execCommand("insertLineBreak");
     event.preventDefault();
+    document.querySelector(".modal-body .close").click();
   }
 });

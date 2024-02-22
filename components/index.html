@@ -20,16 +20,22 @@
       <h1>FLIGNO Express</h1>
     </div>
     <button id="myBtn">Create Note</button>
+    <!-- Second Button -->
     <div id="myModal" class="modal">
       <div class="modal-content">
-        <!-- <span class="close">&times;</span>
-        <p>Notes here...</p> -->
         <div class="modal-body">
           <span class="close">&checkmark;</span>
-          <input type="text" />
+          <textarea
+            placeholder="Please add note here..."
+            name="notes"
+            id="addNotes"
+            cols="100"
+            rows="10"
+          ></textarea>
         </div>
       </div>
     </div>
+    <!-- First choice button -->
     <!-- <div class="container">
       <button class="btn">Create Message</button>
     </div>
@@ -37,6 +43,7 @@
       <img src="/assets/images/delete.png" />
       <p contenteditable="true" class="message-box"></p>
     </div> -->
+    <div class="notes-container"></div>
     <script src="script.js"></script>
   </body>
 </html>

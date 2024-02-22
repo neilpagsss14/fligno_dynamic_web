@@ -31,12 +31,14 @@
 }
 
 button {
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
   color: #474747;
   font-size: 18px;
   border: 0;
   border-radius: 35px;
   padding: 15px 35px;
-  margin: 30px 0 20px;
   cursor: pointer;
 }
 .message-box {
@@ -58,6 +60,13 @@ button {
   right: 5%;
   cursor: pointer;
 }
+#addNotes {
+  background: aquamarine;
+  resize: none;
+  font-size: 20px;
+  font-family: "Poppins";
+  border: none;
+}
 
 .modal {
   display: none;
@@ -72,7 +81,8 @@ button {
   background-color: rgba(0, 0, 0, 0.4);
 }
 .modal-content {
-  background-color: #fefefe;
+  border-radius: 25px;
+  background: aquamarine;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
@@ -80,11 +90,11 @@ button {
 }
 
 .modal-body input {
+  background: aquamarine;
   display: flex;
   padding: 5rem 25rem;
   margin: auto auto;
   max-width: fit-content;
-  /* border: none; */
 }
 .close {
   scale: 0.7;
