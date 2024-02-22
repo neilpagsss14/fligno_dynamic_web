@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  outline: none;
 }
 
 .nav-bar {
@@ -37,15 +38,51 @@ button {
   background: aquamarine;
   position: relative;
   width: 300px;
-  height: 150px;
+  max-width: 500px;
+  max-height: auto;
   color: #333;
   padding: 20px;
   margin: 20px 0;
+  border-radius: 35px;
+  font-family: "Poppins";
+}
+.notes-container img {
+  width: 25px;
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  cursor: pointer;
+}
+
+/* .notes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh; 
+}
+
+.message-box {
+  background: aquamarine;
+  position: relative;
+  width: 300px;
+  max-width: 500px;
+  height: auto;
+  color: #333;
+  padding: 20px;
+  margin: 5px 0;
   outline: none;
   border-radius: 35px;
-  font-family: "";
+  font-family: "Poppins";
+  position: relative;
 }
-.message-box img {
-  display: flex;
-  scale: 0.05;
-}
+
+.message-box img.delete-icon {
+  width: 15px; 
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transform-origin: center;
+  transform: translate(-50%, -50%) scale(0.8); 
+} */
