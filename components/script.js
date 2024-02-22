@@ -1,6 +1,24 @@
 const messageContainer = document.querySelector(".notes-container");
 const createButton = document.querySelector(".btn");
 
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
 let notes = document.querySelectorAll(".message-box");
 
 function showNotes() {
@@ -12,17 +30,17 @@ function updateStorage() {
 }
 
 createButton.addEventListener("click", () => {
-  let messageBox = document.createElement("div"); // Changed from 'p' to 'div'
-  let paragraph = document.createElement("p"); // New element for the editable paragraph
+  let messageBox = document.createElement("div");
+  let paragraph = document.createElement("p");
   let img = document.createElement("img");
   messageBox.className = "message-box";
 
-  paragraph.setAttribute("contenteditable", "true"); // Set contenteditable on the paragraph
-  paragraph.textContent = ""; // Initialize the content with an empty string
+  paragraph.setAttribute("contenteditable", "true");
+  paragraph.textContent = "";
 
   img.src = "/assets/images/delete.png";
   messageContainer.appendChild(messageBox);
-  messageBox.appendChild(paragraph); // Append the paragraph to the messageBox
+  messageBox.appendChild(paragraph);
   messageBox.appendChild(img);
 });
 
