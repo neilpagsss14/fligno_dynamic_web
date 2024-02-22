@@ -24,6 +24,11 @@
   justify-content: center;
   align-items: center;
 }
+.notes-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-between;
+}
 
 button {
   color: #474747;
@@ -42,7 +47,7 @@ button {
   max-height: auto;
   color: #333;
   padding: 20px;
-  margin: 20px 0;
+  margin: 20px auto;
   border-radius: 35px;
   font-family: "Poppins";
 }
