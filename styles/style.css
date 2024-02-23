@@ -13,12 +13,12 @@
 }
 
 .title {
-  font-size: larger;
+  font-size: 20px;
+  width: 100%;
   display: flex;
+  /* position: relative; */
   justify-content: center;
   letter-spacing: 7px;
-  width: 100%;
-  /* background-color: red; */
 }
 
 .toggle-btn {
@@ -26,35 +26,18 @@
   display: flex;
   position: absolute;
   justify-content: end;
-  margin-left: -50px;
 }
-
-/* .nav-bar {
-  display: flex;
-  background-color: rgba(0, 255, 255, 0.507);
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 5rem;
-}
-.toggle-btn {
-  display: flex;
-  align-self: end;
-  justify-self: end;
-}
-
-.title {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  height: 3rem;
-  font-family: "Luckiest Guy";
-  letter-spacing: 9px;
-} */
 
 .ph-moon {
-  background-color: transparent;
+  display: flex;
+  scale: 1.5;
   cursor: pointer;
+  margin-left: -60px;
+}
+#myBtn {
+  margin: 1% auto;
+  display: flex;
+  align-items: center;
 }
 .notes-container {
   height: 78vh;
@@ -72,15 +55,19 @@ body {
   color: #f7f7f2;
 }
 button {
+  background-color: darkcyan;
   display: block;
   margin: auto;
   margin-top: 1rem;
-  color: #474747;
+  color: white;
   font-size: 18px;
   border: 0;
   border-radius: 35px;
   padding: 15px 35px;
   cursor: pointer;
+}
+button:hover {
+  background-color: rgba(0, 139, 139, 0.404);
 }
 .message-box {
   background: aquamarine;
