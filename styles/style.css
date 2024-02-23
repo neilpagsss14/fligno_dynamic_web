@@ -5,19 +5,60 @@
 }
 
 .nav-bar {
-  position: relative;
-}
-
-.nav-bar h1 {
+  padding: 1rem;
+  background-color: rgba(0, 255, 255, 0.507);
   display: flex;
   align-items: center;
+  font-family: "Luckiest Guy";
+}
+
+.title {
+  font-size: larger;
+  display: flex;
   justify-content: center;
+  letter-spacing: 7px;
+  width: 100%;
+  /* background-color: red; */
+}
+
+.toggle-btn {
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: end;
+  margin-left: -50px;
+}
+
+/* .nav-bar {
+  display: flex;
   background-color: rgba(0, 255, 255, 0.507);
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5rem;
+}
+.toggle-btn {
+  display: flex;
+  align-self: end;
+  justify-self: end;
+}
+
+.title {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
   height: 3rem;
   font-family: "Luckiest Guy";
   letter-spacing: 9px;
+} */
+
+.ph-moon {
+  background-color: transparent;
+  cursor: pointer;
 }
 .notes-container {
+  height: 78vh;
+  overflow-y: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
