@@ -66,7 +66,7 @@ close.onclick = function () {
   modal.style.display = "none";
 };
 
-function myFunction() {
+function toggleDark() {
   var element = document.body;
   element.classList.toggle("dark-mode");
 }
