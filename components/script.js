@@ -44,7 +44,7 @@ document
       addNotesTextarea.value = "";
       modal.style.display = "none";
     } else {
-      alert("Please add a note before clicking checkmark.");
+      alert("Please add a note first before proceeding.");
     }
   });
 
@@ -65,3 +65,8 @@ addNotesTextarea.addEventListener("keydown", function (event) {
 close.onclick = function () {
   modal.style.display = "none";
 };
+
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+}
