@@ -5,23 +5,49 @@ const span = document.getElementsByClassName("proceed")[0];
 const close = document.getElementsByClassName("close")[0];
 const addNotesTextarea = document.getElementById("addNotes");
 
+//  function for show local notes
 function showNotes() {
   messageContainer.innerHTML = localStorage.getItem("notes");
 }
 showNotes();
 
+// update function for notes
 function updateStorage() {
   localStorage.setItem("notes", messageContainer.innerHTML);
 }
 
+// click to open modal function
 createButton.addEventListener("click", () => {
   modal.style.display = "block";
 });
 
-span.onclick = function () {
-  modal.style.display = "none";
+// back to top button
+let myButton = document.getElementById("top-button");
+
+window.onscroll = function () {
+  scrollFunction();
 };
 
+function scrollFunction() {
+  if (document.body.scrollTop > 3 || document.documentElement.scrollTop > 3) {
+    myButton.style.display = "block";
+  } else {
+    myButton.style.display = "none";
+  }
+}
+
+function topFunction() {
+  document.documentElement.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
+}
+
+// span.onclick = function () {
+//   modal.style.display = "none";
+// };
+
+// input notes inside modal
 document
   .querySelector(".modal-body .proceed")
   .addEventListener("click", function () {

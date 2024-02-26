@@ -40,8 +40,8 @@
   align-items: center;
 }
 .notes-container {
-  height: 78vh;
-  overflow-y: auto;
+  height: auto;
+  /* overflow-y: auto; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
@@ -54,7 +54,7 @@ body {
   background-color: #1e1e24;
   color: #f7f7f2;
 }
-button {
+#myBtn {
   background-color: darkcyan;
   display: block;
   margin: auto;
@@ -66,8 +66,8 @@ button {
   padding: 15px 35px;
   cursor: pointer;
 }
-button:hover {
-  background-color: rgba(0, 139, 139, 0.404);
+#myBtn:hover {
+  background-color: rgba(0, 124, 124, 0.753);
 }
 .message-box {
   background: aquamarine;
@@ -128,7 +128,7 @@ img {
   border-radius: 20px;
 }
 .proceed-icon:hover {
-  background-color: rgba(0, 139, 139, 0.404);
+  background-color: rgba(0, 124, 124, 0.753);
 }
 .close-icon {
   background-color: darkcyan;
@@ -136,7 +136,7 @@ img {
   border-radius: 20px;
 }
 .close-icon:hover {
-  background-color: rgba(0, 139, 139, 0.404);
+  background-color: rgba(0, 124, 124, 0.753);
 }
 .proceed {
   color: white;
@@ -151,9 +151,21 @@ img {
   font-weight: 500;
 }
 
-/* .proceed:hover,
-.proceed:focus {
-  color: black;
-  text-decoration: none;
+#top-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 5px;
+  /* z-index: 99; */
+  border: none;
+  outline: none;
+  background-color: darkcyan;
+  color: white;
   cursor: pointer;
-} */
+  padding: 10px;
+  border-radius: 25px;
+  font-size: 2rem;
+}
+#top-button:hover {
+  background-color: rgba(0, 124, 124, 0.753);
+}
