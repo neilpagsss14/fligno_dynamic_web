@@ -29,7 +29,10 @@ window.onscroll = function () {
 };
 
 function scrollFunction() {
-  if (document.body.scrollTop > 3 || document.documentElement.scrollTop > 3) {
+  if (
+    document.body.scrollTop > 250 ||
+    document.documentElement.scrollTop > 250
+  ) {
     myButton.style.display = "block";
   } else {
     myButton.style.display = "none";
