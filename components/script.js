@@ -58,16 +58,21 @@ document
     if (noteContent !== "") {
       const messageBox = document.createElement("div");
       const paragraph = document.createElement("p");
-      const img = document.createElement("img");
+      // icon delete
+      const deleteIcon = document.createElement("i");
+      // const img = document.createElement("img");
       messageBox.className = "message-box";
 
       paragraph.textContent = noteContent;
       paragraph.setAttribute("contenteditable", "true");
 
-      img.src = "/assets/images/delete.png";
+      deleteIcon.className = "ph ph-backspace delete-icon";
+
+      // img.src = "/assets/images/delete.png";
       messageContainer.appendChild(messageBox);
       messageBox.appendChild(paragraph);
-      messageBox.appendChild(img);
+      messageBox.appendChild(deleteIcon);
+      // messageBox.appendChild(img);
 
       updateStorage();
       addNotesTextarea.value = "";
@@ -78,7 +83,7 @@ document
   });
 
 messageContainer.addEventListener("click", function (event) {
-  if (event.target.tagName == "IMG") {
+  if (event.target.classList.contains("ph-backspace")) {
     event.target.parentElement.remove();
     updateStorage();
   }
@@ -92,6 +97,7 @@ addNotesTextarea.addEventListener("keydown", function (event) {
 });
 
 close.onclick = function () {
+  localStorage.removeItem("notes");
   modal.style.display = "none";
 };
 

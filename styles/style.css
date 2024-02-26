@@ -54,6 +54,14 @@ body {
   background-color: #1e1e24;
   color: #f7f7f2;
 }
+
+.dark-mode .message-box {
+  background-color: darkcyan;
+  color: white;
+}
+.dark-mode .message-box img {
+  border-color: wheat solid 2px;
+}
 #myBtn {
   background-color: darkcyan;
   display: block;
@@ -80,6 +88,16 @@ body {
   margin: 20px auto;
   border-radius: 35px;
   font-family: "Poppins";
+}
+
+.delete-icon {
+  position: absolute;
+  top: 15px;
+  /* bottom: 15px; */
+  right: 15px;
+  cursor: pointer;
+  scale: 1.5;
+  color: red;
 }
 img {
   width: 25px;
