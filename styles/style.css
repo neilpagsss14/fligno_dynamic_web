@@ -5,11 +5,16 @@
 }
 
 .nav-bar {
+  color: black;
   padding: 1rem;
-  background-color: rgba(0, 255, 255, 0.507);
+  background-color: #33add1;
   display: flex;
   align-items: center;
   font-family: "Luckiest Guy";
+}
+.dark-mode .nav-bar {
+  background-color: #21293c;
+  color: wheat;
 }
 
 .title {
@@ -34,11 +39,6 @@
   cursor: pointer;
   margin-left: -60px;
 }
-#myBtn {
-  margin: 1% auto;
-  display: flex;
-  align-items: center;
-}
 .notes-container {
   height: auto;
   /* overflow-y: auto; */
@@ -52,22 +52,19 @@ body {
 }
 .dark-mode {
   background-color: #1e1e24;
-  color: #f7f7f2;
+  color: wheat;
+}
+.dark-mode #myBtn {
+  color: white;
+  background-color: #33add1;
 }
 
-.dark-mode .message-box {
-  background-color: darkcyan;
-  color: white;
-}
-.dark-mode .message-box img {
-  border-color: wheat solid 2px;
-}
 #myBtn {
-  background-color: darkcyan;
+  background-color: #33add1;
   display: block;
   margin: auto;
   margin-top: 1rem;
-  color: white;
+  color: black;
   font-size: 18px;
   border: 0;
   border-radius: 35px;
@@ -77,8 +74,23 @@ body {
 #myBtn:hover {
   background-color: rgba(0, 124, 124, 0.753);
 }
+.dark-mode #myBtn:hover {
+  background-color: #21293c9c;
+}
+.dark-mode #myBtn {
+  background-color: #21293c;
+  color: wheat;
+}
+
+.dark-mode .modal-content {
+  background-color: #21293c;
+}
+.dark-mode #addNotes {
+  background-color: #21293c;
+  color: wheat;
+}
 .message-box {
-  background: aquamarine;
+  background: #33add1;
   position: relative;
   width: 300px;
   max-width: 500px;
@@ -88,6 +100,10 @@ body {
   margin: 20px auto;
   border-radius: 35px;
   font-family: "Poppins";
+}
+.dark-mode .message-box {
+  background-color: #21293c;
+  color: wheat;
 }
 
 .delete-icon {
@@ -107,7 +123,7 @@ img {
   cursor: pointer;
 }
 #addNotes {
-  background: aquamarine;
+  background: #33add1;
   resize: none;
   font-size: 20px;
   font-family: "Poppins";
@@ -128,7 +144,7 @@ img {
 }
 .modal-content {
   border-radius: 25px;
-  background: aquamarine;
+  background: #33add1;
   margin: 10rem auto;
   padding: 20px;
   border: 1px solid #888;
@@ -141,19 +157,31 @@ img {
   gap: 1rem;
 }
 .proceed-icon {
-  background-color: darkcyan;
+  background-color: #21293c;
   padding: 10px 20px;
   border-radius: 20px;
 }
 .proceed-icon:hover {
-  background-color: rgba(0, 124, 124, 0.753);
+  background-color: #21293cce;
 }
 .close-icon {
-  background-color: darkcyan;
+  background-color: #21293c;
   padding: 10px 20px;
   border-radius: 20px;
 }
+.dark-mode .close {
+  color: black;
+}
+.dark-mode .close-icon {
+  background-color: #33add1;
+}
 .close-icon:hover {
+  background-color: #21293cce;
+}
+.dark-mode .proceed-icon:hover {
+  background-color: rgba(0, 124, 124, 0.753);
+}
+.dark-mode .close-icon:hover {
   background-color: rgba(0, 124, 124, 0.753);
 }
 .proceed {
@@ -161,6 +189,12 @@ img {
   cursor: pointer;
   font-family: "Poppins";
   font-weight: 500;
+}
+.dark-mode .proceed-icon {
+  background-color: #33add1;
+}
+.dark-mode .proceed {
+  color: black;
 }
 .close {
   color: white;
