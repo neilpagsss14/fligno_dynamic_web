@@ -97,7 +97,7 @@ addNotesTextarea.addEventListener("keydown", function (event) {
 });
 
 close.onclick = function () {
-  localStorage.removeItem("notes");
+  // localStorage.removeItem("notes");
   modal.style.display = "none";
 };
 
