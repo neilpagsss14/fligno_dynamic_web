@@ -58,7 +58,9 @@ body {
   color: white;
   background-color: #33add1;
 }
-
+.buttons {
+  display: flex;
+}
 #myBtn {
   background-color: #33add1;
   display: block;
@@ -74,6 +76,50 @@ body {
 #myBtn:hover {
   background-color: rgba(0, 124, 124, 0.753);
 }
+#fetchBtn {
+  background-color: #33add1;
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  color: black;
+  font-size: 18px;
+  border: 0;
+  border-radius: 35px;
+  padding: 15px 35px;
+  cursor: pointer;
+}
+#delBtn {
+  background-color: #33add1;
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
+  color: black;
+  font-size: 18px;
+  border: 0;
+  border-radius: 35px;
+  padding: 15px 35px;
+  cursor: pointer;
+}
+#delBtn:hover {
+  background-color: rgba(0, 124, 124, 0.753);
+}
+.dark-mode #delBtn:hover {
+  background-color: #21293c9c;
+}
+#fetchBtn:hover {
+  background-color: rgba(0, 124, 124, 0.753);
+}
+.dark-mode #fetchBtn:hover {
+  background-color: #21293c9c;
+}
+.dark-mode #fetchBtn {
+  background-color: #21293c;
+  color: wheat;
+}
+.dark-mode #delBtn {
+  background-color: #21293c;
+  color: wheat;
+}
 .dark-mode #myBtn:hover {
   background-color: #21293c9c;
 }
@@ -81,7 +127,12 @@ body {
   background-color: #21293c;
   color: wheat;
 }
-
+#jokeContainer {
+  display: block;
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 10vh;
+}
 .dark-mode .modal-content {
   background-color: #21293c;
 }

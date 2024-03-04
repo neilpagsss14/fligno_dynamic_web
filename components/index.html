@@ -25,8 +25,14 @@
         <i class="ph ph-moon"></i>
       </div>
     </nav>
-    <button id="myBtn">Create Note</button>
+    <div class="buttons">
+      <button id="myBtn">Create Note</button>
+    <button id="fetchBtn">Fetch Joke</button>
+    <button id="delBtn">Delete Joke</button>
+    </div>
+    <div id="jokeContainer"></div>
     <!-- Second Button --> 
+    
     <div id="myModal" class="modal">
       <div class="modal-content">
         <div class="modal-body">
@@ -48,16 +54,9 @@
             rows="10"
           ></textarea>
         </div>
+        
       </div>
     </div>
-    <!-- First choice button -->
-    <!-- <div class="container">
-      <button class="btn">Create Message</button>
-    </div>
-    <div class="notes-container">
-      <img src="/assets/images/delete.png" />
-      <p contenteditable="true" class="message-box"></p>
-    </div> -->
     <div class="notes-container"></div>
     <button onclick="topFunction()" id="top-button"
       <i class="ph ph-arrow-up"></i>

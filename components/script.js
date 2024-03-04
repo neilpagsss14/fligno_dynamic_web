@@ -4,6 +4,11 @@ const modal = document.getElementById("myModal");
 const span = document.getElementsByClassName("proceed")[0];
 const close = document.getElementsByClassName("close")[0];
 const addNotesTextarea = document.getElementById("addNotes");
+const fetchButton = document
+  .getElementById("fetchBtn")
+  .addEventListener("click", fetchJoke);
+
+document.getElementById("delBtn").addEventListener("click", deleteJoke);
 
 //  function for show local notes
 function showNotes() {
@@ -46,10 +51,6 @@ function topFunction() {
   });
 }
 
-// span.onclick = function () {
-//   modal.style.display = "none";
-// };
-
 // input notes inside modal
 document
   .querySelector(".modal-body .proceed")
@@ -78,7 +79,7 @@ document
       addNotesTextarea.value = "";
       modal.style.display = "none";
     } else {
-      alert("Please add a note first before proceeding.");
+      window.alert("Please add a note first before proceeding.");
     }
   });
 
@@ -104,4 +105,31 @@ close.onclick = function () {
 function toggleDark() {
   var element = document.body;
   element.classList.toggle("dark-mode");
+}
+
+function fetchJoke() {
+  // Perform a GET request using fetch API
+  fetch("https://api.chucknorris.io/jokes/random")
+    .then((response) => {
+      // Check if the response is successful (status code between 200 and 299)
+      if (response.ok) {
+        // If successful, parse the JSON response
+        return response.json();
+      } else {
+        // If not successful, throw an error with the status text
+        throw new Error("Error fetching data: " + response.statusText);
+      }
+    })
+    .then((data) => {
+      // Display the fetched joke in the jokeContainer
+      document.getElementById("jokeContainer").innerText = data.value;
+    })
+    .catch((error) => {
+      // Handle any errors that occurred during the fetch
+      console.error("Fetch error:", error);
+    });
+}
+function deleteJoke() {
+  // Clear the jokeContainer text
+  document.getElementById("jokeContainer").innerText = "";
 }
