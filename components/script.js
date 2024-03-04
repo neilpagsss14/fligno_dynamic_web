@@ -70,7 +70,7 @@ document
       deleteIcon.className = "ph ph-backspace delete-icon";
 
       // img.src = "/assets/images/delete.png";
-      messageContainer.appendChild(messageBox);
+      messageContainer.insertBefore(messageBox, messageContainer.firstChild);
       messageBox.appendChild(paragraph);
       messageBox.appendChild(deleteIcon);
       // messageBox.appendChild(img);

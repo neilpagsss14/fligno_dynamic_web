@@ -131,7 +131,7 @@ body {
   display: block;
   text-align: center;
   font-family: "Poppins";
-  font-size: 10vh;
+  font-size: 5vh;
 }
 .dark-mode .modal-content {
   background-color: #21293c;
