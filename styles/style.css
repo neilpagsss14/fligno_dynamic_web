@@ -41,7 +41,6 @@
 }
 .notes-container {
   height: auto;
-  /* overflow-y: auto; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
@@ -277,3 +276,87 @@ img {
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* Small devices such as large phones (640px and up) */
+@media only screen and (max-width: 40em) {
+  .nav-bar {
+    width: 100%;
+  }
+  #top-button {
+    right: 50px;
+  }
+  .title {
+    font-size: 12px;
+    display: flex;
+    justify-content: start;
+  }
+  #myBtn,
+  #delBtn,
+  #fetchBtn {
+    padding: 5px 5px;
+  }
+  .notes-container {
+    grid-template-columns: 1fr !important;
+  }
+  .modal-content {
+    width: 200px;
+    height: 350px;
+    /* background-color: red; */
+  }
+  .close-icon,
+  .proceed-icon {
+    padding: 7px 5px;
+  }
+  #addNotes {
+    /* background-color: green; */
+    width: 200px;
+    height: 300px;
+  }
+}
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (max-width: 48em) {
+  .nav-bar {
+    width: 100%;
+  }
+  .notes-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px;
+  }
+}
+/* Large devices such as laptops (1024px and up) */
+@media only screen and (max-width: 64em) {
+  .notes-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px;
+  }
+  #jokeContainer {
+    font-size: 2.5vh;
+  }
+  #top-button {
+    right: 50px;
+  }
+}
+@media only screen and (max-width: 80em) {
+  #top-button {
+    right: 30px;
+  }
+}
+
+/* @media (orientation: landscape) {
+  .notes-container {
+    background-color: red;
+  }
+}
+
+@media (orientation: portrait) {
+  .notes-container {
+    display: grid;
+    justify-content: space-evenly;
+    align-content: center;
+    gap: 1rem;
+    padding: 2rem;
+    margin: auto;
+  }
+} */
