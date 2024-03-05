@@ -107,27 +107,42 @@ function toggleDark() {
   element.classList.toggle("dark-mode");
 }
 
-function fetchJoke() {
-  // Perform a GET request using fetch API
-  fetch("https://api.chucknorris.io/jokes/random")
-    .then((response) => {
-      // Check if the response is successful (status code between 200 and 299)
-      if (response.ok) {
-        // If successful, parse the JSON response
-        return response.json();
-      } else {
-        // If not successful, throw an error with the status text
-        throw new Error("Error fetching data: " + response.statusText);
-      }
-    })
-    .then((data) => {
-      // Display the fetched joke in the jokeContainer
+async function fetchJoke() {
+  try {
+    const response = await fetch("https://api.chucknorris.io/jokes/random");
+    let data = null;
+    if (response.ok) {
+      // If successful, parse the JSON response
+      data = await response.json();
       document.getElementById("jokeContainer").innerText = data.value;
-    })
-    .catch((error) => {
-      // Handle any errors that occurred during the fetch
-      console.error("Fetch error:", error);
-    });
+    } else {
+      // If not successful, throw an error with the status text
+      throw new Error("Error fetching data: " + response.statusText);
+    }
+  } catch {
+    alert("Error fetching data");
+  }
+
+  // Perform a GET request using fetch API
+  // fetch("https://api.chucknorris.io/jokes/random")
+  //   .then((response) => {
+  //     // Check if the response is successful (status code between 200 and 299)
+  //     if (response.ok) {
+  //       // If successful, parse the JSON response
+  //       return response.json();
+  //     } else {
+  //       // If not successful, throw an error with the status text
+  //       throw new Error("Error fetching data: " + response.statusText);
+  //     }
+  //   })
+  //   .then((data) => {
+  //     // Display the fetched joke in the jokeContainer
+  //     document.getElementById("jokeContainer").innerText = data.value;
+  //   })
+  //   .catch((error) => {
+  //     // Handle any errors that occurred during the fetch
+  //     console.error("Fetch error:", error);
+  //   });
 }
 function deleteJoke() {
   // Clear the jokeContainer text
