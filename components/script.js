@@ -82,15 +82,14 @@ document
       window.alert("Please add a note first before proceeding.");
     }
   });
-
-messageContainer.addEventListener("click", function (event) {
+messageContainer.addEventListener("click", (event) => {
   if (event.target.classList.contains("ph-backspace")) {
     event.target.parentElement.remove();
     updateStorage();
   }
 });
 
-addNotesTextarea.addEventListener("keydown", function (event) {
+addNotesTextarea.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
     document.querySelector(".modal-body .proceed").click();
@@ -111,6 +110,7 @@ async function fetchJoke() {
   try {
     const response = await fetch("https://api.chucknorris.io/jokes/random");
     let data = null;
+
     if (response.ok) {
       // If successful, parse the JSON response
       data = await response.json();
