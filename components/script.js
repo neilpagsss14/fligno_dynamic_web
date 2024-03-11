@@ -61,18 +61,38 @@ document
       const paragraph = document.createElement("p");
       // icon delete
       const deleteIcon = document.createElement("i");
+      const editIcon = document.createElement("i");
       // const img = document.createElement("img");
       messageBox.className = "message-box";
 
       paragraph.textContent = noteContent;
-      paragraph.setAttribute("contenteditable", "true");
+      paragraph.setAttribute("contenteditable", "false");
 
-      deleteIcon.className = "ph ph-backspace delete-icon";
+      deleteIcon.className = "ph ph-trash delete-icon";
+      editIcon.className = "ph ph-pencil edit-icon";
+
+      editIcon.addEventListener("click", function () {
+        paragraph.setAttribute("contenteditable", "true");
+        paragraph.focus();
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(paragraph);
+        range.collapse(false);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        paragraph.addEventListener("keypress", function (event) {
+          if (event.key == "Enter") {
+            paragraph.setAttribute("contentEditable", "false");
+            updateStorage();
+          }
+        });
+      });
 
       // img.src = "/assets/images/delete.png";
       messageContainer.insertBefore(messageBox, messageContainer.firstChild);
       messageBox.appendChild(paragraph);
       messageBox.appendChild(deleteIcon);
+      messageBox.appendChild(editIcon);
       // messageBox.appendChild(img);
 
       updateStorage();
@@ -83,7 +103,7 @@ document
     }
   });
 messageContainer.addEventListener("click", (event) => {
-  if (event.target.classList.contains("ph-backspace")) {
+  if (event.target.classList.contains("ph-trash")) {
     event.target.parentElement.remove();
     updateStorage();
   }
@@ -110,7 +130,6 @@ async function fetchJoke() {
   try {
     const response = await fetch("https://api.chucknorris.io/jokes/random");
     let data = null;
-
     if (response.ok) {
       // If successful, parse the JSON response
       data = await response.json();

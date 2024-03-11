@@ -39,6 +39,7 @@
   cursor: pointer;
   margin-left: -60px;
 }
+
 .notes-container {
   height: auto;
   display: grid;
@@ -164,8 +165,25 @@ body {
   right: 15px;
   cursor: pointer;
   scale: 1.5;
-  color: red;
+  color: black;
 }
+
+.dark-mode .delete-icon {
+  color: wheat;
+}
+.dark-mode .edit-icon {
+  color: wheat;
+}
+
+.edit-icon {
+  position: absolute;
+  top: 15px;
+  right: 40px;
+  cursor: pointer;
+  scale: 1.5;
+  color: black;
+}
+
 img {
   width: 25px;
   position: absolute;
