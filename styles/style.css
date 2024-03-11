@@ -32,12 +32,42 @@
   position: absolute;
   justify-content: end;
 }
-
+.ph-eraser {
+  display: flex;
+  cursor: pointer;
+  scale: 1.5;
+  margin-left: -100px;
+}
 .ph-moon {
   display: flex;
   scale: 1.5;
   cursor: pointer;
   margin-left: -60px;
+}
+
+#showSnackBar {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #33add175;
+  color: green;
+  font-family: "Poppins";
+  text-align: center;
+  border-radius: 10px;
+  padding: 15px;
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+  left: 15px;
+}
+
+.dark-mode #showSnackBar {
+  color: wheat;
+}
+
+#showSnackBar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 .notes-container {
@@ -160,12 +190,25 @@ body {
 
 .delete-icon {
   position: absolute;
-  top: 15px;
+  top: 5px;
   /* bottom: 15px; */
   right: 15px;
   cursor: pointer;
   scale: 1.5;
   color: black;
+}
+
+.delete-icon:hover {
+  color: red;
+}
+.edit-icon:hover {
+  color: wheat;
+}
+.dark-mode .delete-icon:hover {
+  color: red;
+}
+.dark-mode .edit-icon:hover {
+  color: green;
 }
 
 .dark-mode .delete-icon {
@@ -177,7 +220,7 @@ body {
 
 .edit-icon {
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 40px;
   cursor: pointer;
   scale: 1.5;

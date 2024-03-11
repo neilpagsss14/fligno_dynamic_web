@@ -30,10 +30,6 @@ createButton.addEventListener("click", () => {
 let myButton = document.getElementById("top-button");
 
 window.onscroll = function () {
-  scrollFunction();
-};
-
-function scrollFunction() {
   if (
     document.body.scrollTop > 250 ||
     document.documentElement.scrollTop > 250
@@ -42,7 +38,7 @@ function scrollFunction() {
   } else {
     myButton.style.display = "none";
   }
-}
+};
 
 function topFunction() {
   document.documentElement.scrollIntoView({
@@ -117,7 +113,6 @@ addNotesTextarea.addEventListener("keydown", (event) => {
 });
 
 close.onclick = function () {
-  // localStorage.removeItem("notes");
   modal.style.display = "none";
 };
 
@@ -125,6 +120,24 @@ function toggleDark() {
   var element = document.body;
   element.classList.toggle("dark-mode");
 }
+
+function snackBarMsg(message) {
+  showSnackBar.innerHTML = '<i class="ph ph-check-circle"></i>' + message;
+  showSnackBar.classList.add("show");
+  setTimeout(function () {
+    showSnackBar.className = showSnackBar.className.replace("show", "");
+  }, 3000);
+}
+
+function eraseAll() {
+  if (window.confirm("Are you sure you want to delete all NOTES?")) {
+    localStorage.removeItem("notes");
+    messageContainer.innerHTML = localStorage.getItem("notes");
+    snackBarMsg(" Successfully deleted all NOTES.");
+  }
+}
+
+// Function to show the snackbar with a message
 
 async function fetchJoke() {
   try {
