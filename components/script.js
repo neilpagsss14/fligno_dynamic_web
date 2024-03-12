@@ -133,10 +133,12 @@ function snackBarMsg(message) {
 }
 
 function eraseAll() {
+  // document.getElementById("showSnackBar").style.color = "red";
   if (window.confirm("Are you sure you want to delete all NOTES?")) {
     localStorage.removeItem("notes");
     messageContainer.innerHTML = localStorage.getItem("notes");
     snackBarMsg(" Successfully deleted all NOTES.");
+    document.getElementById("showSnackBar").style.color = "green";
   }
 }
 
@@ -167,7 +169,16 @@ async function fetchJokeByKeyword(keyword) {
           document.getElementById("jokeContainer").appendChild(jokeElement);
         });
       } else {
-        alert("No jokes found matching the keyword.");
+        function snackBarMsg(message) {
+          showSnackBar.innerHTML = message;
+          showSnackBar.classList.add("show");
+          setTimeout(function () {
+            showSnackBar.className = showSnackBar.className.replace("show", "");
+          }, 3000);
+        }
+        snackBarMsg("No jokes found matching the keyword.");
+        document.getElementById("showSnackBar").style.color = "red";
+        // alert("No jokes found matching the keyword.");
       }
     } else {
       throw new Error("Error fetching data: " + response.statusText);
@@ -182,7 +193,16 @@ async function searchJoke() {
   const searchKeyword = document.getElementById("searchInput").value.trim();
 
   if (searchKeyword === "") {
-    alert("Please enter a search keyword.");
+    function snackBarMsg(message) {
+      showSnackBar.innerHTML = message;
+      showSnackBar.classList.add("show");
+      setTimeout(function () {
+        showSnackBar.className = showSnackBar.className.replace("show", "");
+      }, 3000);
+    }
+    snackBarMsg("Please enter a search keyword.");
+    document.getElementById("showSnackBar").style.color = "red";
+    // alert("Please enter a search keyword.");
     return;
   }
 
