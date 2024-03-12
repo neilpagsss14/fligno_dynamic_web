@@ -125,7 +125,7 @@ function toggleDark() {
 }
 // Function to show the snackbar with a message
 function snackBarMsg(message) {
-  showSnackBar.innerHTML = '<i class="ph ph-check-circle"></i>' + message;
+  showSnackBar.innerHTML = message;
   showSnackBar.classList.add("show");
   setTimeout(function () {
     showSnackBar.className = showSnackBar.className.replace("show", "");
@@ -133,11 +133,12 @@ function snackBarMsg(message) {
 }
 
 function eraseAll() {
-  // document.getElementById("showSnackBar").style.color = "red";
   if (window.confirm("Are you sure you want to delete all NOTES?")) {
     localStorage.removeItem("notes");
     messageContainer.innerHTML = localStorage.getItem("notes");
-    snackBarMsg(" Successfully deleted all NOTES.");
+    snackBarMsg(
+      '<i class="ph ph-check-circle"></i>' + "Successfully deleted all NOTES."
+    );
     document.getElementById("showSnackBar").style.color = "green";
   }
 }
@@ -154,10 +155,7 @@ async function fetchJokeByKeyword(keyword) {
       const data = await response.json();
 
       if (data.result.length > 0) {
-        // Clear the jokeContainer before displaying new results
         document.getElementById("jokeContainer").innerHTML = "";
-
-        // Iterate over each joke containing the keyword and display it
         data.result.forEach((joke) => {
           const jokeElement = document.createElement("p");
           const jokeText = joke.value;
@@ -169,13 +167,6 @@ async function fetchJokeByKeyword(keyword) {
           document.getElementById("jokeContainer").appendChild(jokeElement);
         });
       } else {
-        function snackBarMsg(message) {
-          showSnackBar.innerHTML = message;
-          showSnackBar.classList.add("show");
-          setTimeout(function () {
-            showSnackBar.className = showSnackBar.className.replace("show", "");
-          }, 3000);
-        }
         snackBarMsg("No jokes found matching the keyword.");
         document.getElementById("showSnackBar").style.color = "red";
         // alert("No jokes found matching the keyword.");
@@ -193,13 +184,6 @@ async function searchJoke() {
   const searchKeyword = document.getElementById("searchInput").value.trim();
 
   if (searchKeyword === "") {
-    function snackBarMsg(message) {
-      showSnackBar.innerHTML = message;
-      showSnackBar.classList.add("show");
-      setTimeout(function () {
-        showSnackBar.className = showSnackBar.className.replace("show", "");
-      }, 3000);
-    }
     snackBarMsg("Please enter a search keyword.");
     document.getElementById("showSnackBar").style.color = "red";
     // alert("Please enter a search keyword.");
