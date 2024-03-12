@@ -1,3 +1,5 @@
+// import axios from "axios";
+// const axios = require("axios");
 const messageContainer = document.querySelector(".notes-container");
 const createButton = document.getElementById("myBtn");
 const modal = document.getElementById("myModal");
@@ -9,6 +11,7 @@ const fetchButton = document
   .addEventListener("click", fetchJoke);
 
 document.getElementById("delBtn").addEventListener("click", deleteJoke);
+document.getElementById("searchBtn").addEventListener("click", searchJoke);
 
 //  function for show local notes
 function showNotes() {
@@ -120,7 +123,7 @@ function toggleDark() {
   var element = document.body;
   element.classList.toggle("dark-mode");
 }
-
+// Function to show the snackbar with a message
 function snackBarMsg(message) {
   showSnackBar.innerHTML = '<i class="ph ph-check-circle"></i>' + message;
   showSnackBar.classList.add("show");
@@ -137,46 +140,70 @@ function eraseAll() {
   }
 }
 
-// Function to show the snackbar with a message
+async function fetchJokeByKeyword(keyword) {
+  try {
+    const response = await fetch(
+      `https://api.chucknorris.io/jokes/search?query=${encodeURIComponent(
+        keyword
+      )}`
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+
+      if (data.result.length > 0) {
+        // Clear the jokeContainer before displaying new results
+        document.getElementById("jokeContainer").innerHTML = "";
+
+        // Iterate over each joke containing the keyword and display it
+        data.result.forEach((joke) => {
+          const jokeElement = document.createElement("p");
+          const jokeText = joke.value;
+          const highlightedJoke = jokeText.replaceAll(
+            new RegExp(keyword, "gi"),
+            `<span style="background-color: lightblue;">${keyword}</span>`
+          );
+          jokeElement.innerHTML = highlightedJoke;
+          document.getElementById("jokeContainer").appendChild(jokeElement);
+        });
+      } else {
+        alert("No jokes found matching the keyword.");
+      }
+    } else {
+      throw new Error("Error fetching data: " + response.statusText);
+    }
+  } catch (error) {
+    alert("Error fetching data: " + error);
+  }
+}
+
+// Call fetchJokeByKeyword with the search keyword
+async function searchJoke() {
+  const searchKeyword = document.getElementById("searchInput").value.trim();
+
+  if (searchKeyword === "") {
+    alert("Please enter a search keyword.");
+    return;
+  }
+
+  await fetchJokeByKeyword(searchKeyword);
+}
 
 async function fetchJoke() {
   try {
     const response = await fetch("https://api.chucknorris.io/jokes/random");
     let data = null;
     if (response.ok) {
-      // If successful, parse the JSON response
       data = await response.json();
       document.getElementById("jokeContainer").innerText = data.value;
     } else {
-      // If not successful, throw an error with the status text
       throw new Error("Error fetching data: " + response.statusText);
     }
   } catch {
     alert("Error fetching data");
   }
-
-  // Perform a GET request using fetch API
-  // fetch("https://api.chucknorris.io/jokes/random")
-  //   .then((response) => {
-  //     // Check if the response is successful (status code between 200 and 299)
-  //     if (response.ok) {
-  //       // If successful, parse the JSON response
-  //       return response.json();
-  //     } else {
-  //       // If not successful, throw an error with the status text
-  //       throw new Error("Error fetching data: " + response.statusText);
-  //     }
-  //   })
-  //   .then((data) => {
-  //     // Display the fetched joke in the jokeContainer
-  //     document.getElementById("jokeContainer").innerText = data.value;
-  //   })
-  //   .catch((error) => {
-  //     // Handle any errors that occurred during the fetch
-  //     console.error("Fetch error:", error);
-  //   });
 }
+
 function deleteJoke() {
-  // Clear the jokeContainer text
   document.getElementById("jokeContainer").innerText = "";
 }
