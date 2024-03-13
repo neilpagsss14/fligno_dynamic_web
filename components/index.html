@@ -17,19 +17,19 @@
   </head>
   <body>
     <nav class="nav-bar">
+      <img src="/assets/images/fligno logo.png"/>
       <div class="title">
-        <h1>FLIGNO Express</h1>
+        <h1>FLIGNO EXPRESS</h1>
       </div>
-      <div onclick="eraseAll()">
-          <i class="ph ph-eraser"></i>
-        </div>
+      <div class="right-side-view">
+          <i onclick="eraseAll()" class="ph ph-eraser"></i>
       <!-- Toggle dark/light  -->
-      <div onclick="toggleDark()">
-        <i class="ph ph-moon"></i>
-      </div>
+
+        <i id="darkModeIcon" onclick="toggleDark()" class="ph ph-moon"></i>
       <!-- <div class="search"> -->
         <input type="text" id="searchInput" placeholder="Search for a joke...">
       <button id="searchBtn">Search</button>
+      </div>
       <!-- </div> -->
      
       

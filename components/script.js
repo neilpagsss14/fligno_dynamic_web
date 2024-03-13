@@ -122,7 +122,17 @@ close.onclick = function () {
 function toggleDark() {
   var element = document.body;
   element.classList.toggle("dark-mode");
+
+  var icon = document.getElementById("darkModeIcon");
+  if (element.classList.contains("dark-mode")) {
+    icon.classList.remove("ph-moon");
+    icon.classList.add("ph-sun");
+  } else {
+    icon.classList.remove("ph-sun");
+    icon.classList.add("ph-moon");
+  }
 }
+
 // Function to show the snackbar with a message
 function snackBarMsg(message) {
   showSnackBar.innerHTML = message;
@@ -137,7 +147,7 @@ function eraseAll() {
     localStorage.removeItem("notes");
     messageContainer.innerHTML = localStorage.getItem("notes");
     snackBarMsg(
-      '<i class="ph ph-check-circle"></i>' + "Successfully deleted all NOTES."
+      '<i class="ph ph-check-circle"></i>' + " Successfully deleted all NOTES."
     );
     document.getElementById("showSnackBar").style.color = "green";
   }
@@ -167,7 +177,10 @@ async function fetchJokeByKeyword(keyword) {
           document.getElementById("jokeContainer").appendChild(jokeElement);
         });
       } else {
-        snackBarMsg("No jokes found matching the keyword.");
+        snackBarMsg(
+          '<i class="ph ph-warning-circle"></i>' +
+            " No jokes found matching the keyword."
+        );
         document.getElementById("showSnackBar").style.color = "red";
         // alert("No jokes found matching the keyword.");
       }
@@ -184,7 +197,10 @@ async function searchJoke() {
   const searchKeyword = document.getElementById("searchInput").value.trim();
 
   if (searchKeyword === "") {
-    snackBarMsg("Please enter a search keyword.");
+    snackBarMsg(
+      ' <i class="ph ph-warning-circle"></i>' +
+        " Please enter a search keyword."
+    );
     document.getElementById("showSnackBar").style.color = "red";
     // alert("Please enter a search keyword.");
     return;
