@@ -47,7 +47,7 @@ img {
   scale: 1.5;
 }
 .ph-moon,
-.ph-sun {
+.ph-sun-dim {
   margin-left: 5vh;
   display: flex;
   scale: 1.5;
@@ -376,7 +376,7 @@ body {
     margin-left: 1px;
   }
   .ph-moon,
-  .ph-sun {
+  .ph-sun-dim {
     margin-left: 2vh;
   }
   #searchInput {

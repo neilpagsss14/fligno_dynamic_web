@@ -126,9 +126,9 @@ function toggleDark() {
   var icon = document.getElementById("darkModeIcon");
   if (element.classList.contains("dark-mode")) {
     icon.classList.remove("ph-moon");
-    icon.classList.add("ph-sun");
+    icon.classList.add("ph-sun-dim");
   } else {
-    icon.classList.remove("ph-sun");
+    icon.classList.remove("ph-sun-dim");
     icon.classList.add("ph-moon");
   }
 }
