@@ -10,9 +10,20 @@ const fetchButton = document
   .getElementById("fetchBtn")
   .addEventListener("click", fetchJoke);
 
+const searchInput = document.getElementById("searchInput");
+const clearInput = document.getElementById("clearInput");
+
 document.getElementById("delBtn").addEventListener("click", deleteJoke);
 document.getElementById("searchBtn").addEventListener("click", searchJoke);
 
+searchInput.addEventListener("input", function () {
+  clearInput.style.display = this.value ? "block" : "none";
+});
+
+clearInput.addEventListener("click", () => {
+  searchInput.value = "";
+  clearInput.style.display = "none";
+});
 //  function for show local notes
 function showNotes() {
   messageContainer.innerHTML = localStorage.getItem("notes");
