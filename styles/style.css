@@ -13,6 +13,13 @@
   max-width: 100%;
   justify-content: space-between;
 }
+
+.timestamp {
+  font-family: "Poppins";
+  font-size: 14px;
+  font-style: italic;
+  color: #77434390;
+}
 img {
   width: 5rem;
   position: absolute;
@@ -365,12 +372,17 @@ body {
 
 /* Small devices such as large phones (640px and up) */
 @media only screen and (max-width: 40em) {
-  .title {
-    width: 15vh;
+  img {
+    left: 2px;
+    border: none;
+  }
+  .title h1 {
+    display: none;
   }
   .nav-bar {
+    justify-content: start;
     width: 100%;
-    /* background-color: red; */
+    background-color: red;
   }
   .ph-eraser {
     margin-left: 1px;

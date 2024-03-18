@@ -50,6 +50,34 @@ function topFunction() {
   });
 }
 
+// function getCurrentDateTime() {
+//   const now = new Date();
+//   const options = {
+//     year: "numeric",
+//     month: "short",
+//     day: "numeric",
+//     hour: "2-digit",
+//     minute: "2-digit",
+//     second: "2-digit",
+//   };
+//   return now.toLocaleDateString("en-SG", options);
+// }
+
+class NoteDateTime {
+  static getCurrentDateTime() {
+    const now = new Date();
+    const options = {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    };
+    return now.toLocaleDateString("en-SG", options);
+  }
+}
+
 // input notes inside modal
 document
   .querySelector(".modal-body .proceed")
@@ -61,14 +89,17 @@ document
       // icon delete
       const deleteIcon = document.createElement("i");
       const editIcon = document.createElement("i");
+      const time = document.createElement("p");
+      time.textContent = NoteDateTime.getCurrentDateTime();
+      time.className = "timestamp";
       // const img = document.createElement("img");
       messageBox.className = "message-box";
 
       paragraph.textContent = noteContent;
       paragraph.setAttribute("contenteditable", "false");
 
-      deleteIcon.className = "ph ph-trash delete-icon";
-      editIcon.className = "ph ph-pencil edit-icon";
+      deleteIcon.className = "ph-fill ph-trash delete-icon";
+      editIcon.className = "ph-fill ph-pencil edit-icon";
 
       editIcon.addEventListener("click", function () {
         paragraph.setAttribute("contenteditable", "true");
@@ -86,9 +117,8 @@ document
           }
         });
       });
-
-      // img.src = "/assets/images/delete.png";
       messageContainer.insertBefore(messageBox, messageContainer.firstChild);
+      messageBox.appendChild(time);
       messageBox.appendChild(paragraph);
       messageBox.appendChild(deleteIcon);
       messageBox.appendChild(editIcon);
@@ -142,16 +172,33 @@ function snackBarMsg(message) {
   }, 3000);
 }
 
-function eraseAll() {
-  if (window.confirm("Are you sure you want to delete all NOTES?")) {
-    localStorage.removeItem("notes");
-    messageContainer.innerHTML = localStorage.getItem("notes");
-    snackBarMsg(
-      '<i class="ph ph-check-circle"></i>' + " Successfully deleted all NOTES."
-    );
-    document.getElementById("showSnackBar").style.color = "green";
+class DeleteNotes {
+  static eraseAll() {
+    if (window.confirm("Are you sure you want to erase ALL NOTES?")) {
+      localStorage.removeItem("notes");
+      messageContainer.innerHTML = localStorage.getItem("notes");
+      snackBarMsg(
+        '<i class="ph ph-check-circle"></i>' +
+          " Successfully deleted all NOTES."
+      );
+      document.getElementById("showSnackBar").style.color = "green";
+    }
   }
 }
+
+const eraseNote = document.getElementById("delete");
+eraseNote.addEventListener("click", DeleteNotes.eraseAll);
+
+// function eraseAll() {
+//   if (window.confirm("Are you sure you want to delete all NOTES?")) {
+//     localStorage.removeItem("notes");
+//     messageContainer.innerHTML = localStorage.getItem("notes");
+//     snackBarMsg(
+//       '<i class="ph ph-check-circle"></i>' + " Successfully deleted all NOTES."
+//     );
+//     document.getElementById("showSnackBar").style.color = "green";
+//   }
+// }
 
 async function fetchJokeByKeyword(keyword) {
   try {
