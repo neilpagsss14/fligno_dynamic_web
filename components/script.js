@@ -1,5 +1,3 @@
-// import axios from "axios";
-// const axios = require("axios");
 const messageContainer = document.querySelector(".notes-container");
 const createButton = document.getElementById("myBtn");
 const modal = document.getElementById("myModal");
@@ -60,19 +58,6 @@ function topFunction() {
     block: "start",
   });
 }
-
-// function getCurrentDateTime() {
-//   const now = new Date();
-//   const options = {
-//     year: "numeric",
-//     month: "short",
-//     day: "numeric",
-//     hour: "2-digit",
-//     minute: "2-digit",
-//     second: "2-digit",
-//   };
-//   return now.toLocaleDateString("en-SG", options);
-// }
 
 class NoteDateTime {
   static getCurrentDateTime() {
@@ -199,17 +184,6 @@ class DeleteNotes {
 
 const eraseNote = document.getElementById("delete");
 eraseNote.addEventListener("click", DeleteNotes.eraseAll);
-
-// function eraseAll() {
-//   if (window.confirm("Are you sure you want to delete all NOTES?")) {
-//     localStorage.removeItem("notes");
-//     messageContainer.innerHTML = localStorage.getItem("notes");
-//     snackBarMsg(
-//       '<i class="ph ph-check-circle"></i>' + " Successfully deleted all NOTES."
-//     );
-//     document.getElementById("showSnackBar").style.color = "green";
-//   }
-// }
 
 async function fetchJokeByKeyword(keyword) {
   try {
